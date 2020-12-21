@@ -1,0 +1,14 @@
+#kullanicidan 5 farkli tipte deger alip ekrana tipi ile yazdiran program.
+try:
+    deger_1=int(input('integer tipinde 1. degeri giriniz. örnek(0,25,3): '))
+    deger_2=float(input('float tipinde 2. degeri giriniz. örnek(5.0,4.6,0.95): '))
+    deger_3=input('string tipinde 3. degeri giriniz. örnek(merhaba,python): ')
+    deger_4=bool(input('boolean tipinde 4. degeri giriniz. örnek(True,False): '))
+    deger_5=list(input('list tipinde bosluk birakmadan 5. degeri giriniz. örnek(2a5gdf4s): '))
+    print('girdiginiz 1. deger olan {0}, {1} tipindedir.'.format(deger_1,type(deger_1)))
+    print('girdiginiz 2. deger olan {0}, {1} tipindedir.'.format(deger_2,type(deger_2)))
+    print('girdiginiz 3. deger olan {0}, {1} tipindedir.'.format(deger_3,type(deger_3)))
+    print('girdiginiz 4. deger olan {0}, {1} tipindedir.'.format(deger_4,type(deger_4)))
+    print('girdiginiz 5. deger olan {0}, {1} tipindedir.'.format(deger_5,type(deger_5)))
+except:
+    print('veri tipini yanlis girdiniz!..')
