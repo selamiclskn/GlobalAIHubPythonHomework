@@ -1,0 +1,135 @@
+
+ogrenciler=[]
+dersler=[]
+secili_dersler=[]
+
+
+
+
+def ana_menu():
+    print("************ANA MENÜ************")
+    secim=input("öğrenci eklemek için 1'e\n"
+                "öğrenci girişi için 2'ye\n"
+                "öğrenci listesini görmek için 3'e basınız:")
+    if secim=='1':
+         ogrenci_ekle()
+    elif secim=='2':
+         ogrenci_giris()
+    elif secim=='3':
+        print(ogrenciler)
+        ana_menu()
+    else:
+        print("geçersiz giriş yaptınız!")
+
+def ogrenci_ekle():
+    print("***********ÖĞRENCİ EKLEME EKRANI***********")
+    while True:
+        print("öğrenci eklemek için aşağıdaki bilgileri doldurunuz.")
+        ad=input("adınız: ")
+        soyad=input("soyadınız: ")
+        print("öğrenci başarıyla eklenmiştir.")
+        ogrenciler.append(ad+soyad)
+        secim=input("öğrenci ekleme işlemine devam etmek için 'devam', ana menüye dönmek için 'ana menü' yazınız. ")
+        if secim=='devam':
+            continue
+        elif secim=='ana menü':
+            ana_menu()
+            break
+        else:
+            print("geçersiz işlem!")
+            break
+def ogrenci_giris():
+    print("**************ÖĞRENCİ GİRİŞ EKRANI************")
+    print("öğrenci girişi yapabilmek için aşağıdaki bilgileri doldurunuz. 3 kere yanlış girilmesi durumunda sistemimize bir süre erişiminiz engellenecektir.")
+    hak=3
+    while hak>0:
+        ad = input("adınız: ")
+        soyad = input("soyadınız: ")
+        if ad+soyad in ogrenciler:
+            print("tebrikler,giriş başarılı. Öğrenci paneline yönlendiriliyorsunuz...")
+            ogrenci_panel()
+            break
+
+        else:
+            hak-=1
+            print("hatalı giriş yaptınız kalan hakkınız: {}".format(hak))
+    else:
+        print("3 kere hatalı girdiniz. lütfen daha sonra tekrar deneyiniz.")
+
+def ogrenci_panel():
+    print("**********ÖĞRENCİ PANELİ***********")
+    secim=input("ders eklemek için 1'e\n"
+          "ders seçimi yapmak için 2'ye basınız.")
+    if secim=='1':
+        ders_ekle()
+    elif secim=='2':
+        ders_sec()
+
+
+def ders_ekle():
+    print("************DERS EKLEME EKRANI***********")
+    print("5 adet ders girmeniz gerekmektedir.")
+    for x in range(1,6):
+        ders=input("eklemek istediğiniz {}. dersi giriniz:".format(x))
+        dersler.append(ders)
+    print("dersleriniz başarıyla eklenmiştir ÖĞRENCİ PANELİ'ne yönlendiriliyorsunuz...")
+    ogrenci_panel()
+
+
+
+def ders_sec():
+    print("************DERS SEÇİM EKRANI*************")
+    print("aşağıdaki derslerden en az 3, en fazla 5 tane seçiniz. 3'den az ders seçimi yapmanız durumunda sınıfta kalırsınız.")
+    print(dersler)
+    hak=int(input("kaç ders seçeceksiniz: "))
+    if hak<3:
+        print("sınıfta kaldınız!")
+    else:
+        while hak>0:
+            secim=input("sectiğiniz ders: ")
+            secili_dersler.append(secim)
+            hak-=1
+    print("dersler başarıyla seçildi.")
+    sinavlar()
+
+def sinavlar():
+    print("********SINAVLAR EKRANI*************")
+    sayi=int(input("kaç dersten sorumlusunuz: "))
+    for i in range(sayi):
+        ders=secili_dersler[i]
+        vize_not=int(input("{} dersinden aldığınız vize notunu giriniz: ".format(secili_dersler[i])))
+        final_not=int(input("{} dersinden aldığınız final notunu giriniz: ".format(secili_dersler[i])))
+        proje_not=int(input(("{} dersinden aldığınız proje notunu giriniz: ".format(secili_dersler[i]))))
+        gecme_not=(vize_not*0.3)+(final_not*0.5)+(proje_not*0.2)
+        if gecme_not>90:
+            harf_not='AA'
+        elif 70<gecme_not<90:
+            harf_not='BB'
+        elif 50<gecme_not<70:
+            harf_not='CC'
+        elif 30<gecme_not<50:
+            harf_not='DD'
+        else:
+            harf_not='FF'
+
+        sinav={
+            'ders': ders,
+            'vize notu': vize_not,
+            'final notu': final_not,
+            'proje notu': proje_not,
+            'geçme notu': gecme_not,
+            'harf notu': harf_not
+        }
+        print(sinav)
+        if harf_not=='FF':
+            print("{} dersinde çok başarısızsın!..".format(ders))
+        x=int(input("ANA MENÜ'ye dönmek için 1'e basınız: "))
+        if x=='1':
+            ana_menu()
+
+ana_menu()
+
+
+
+
+
