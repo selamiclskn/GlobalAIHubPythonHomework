@@ -6,7 +6,7 @@ kelmimeler = ["globalaihub", "turkishaihub", "omer cengiz", "elif yigit", "kutay
 def ana_menu():
     print("*********ANA MENÜ**********")
     print("Bunu biliyor muydunuz?: Avrupa'da 17. yy'da adam asma oyunu ölüm hükmü almış kişilere oynatılırdı. Sonuca göre hükümlünün canı bağışlanırdı.")
-    print("Her yanlış tahminde idama daha da yaklaşırsınız. Bunu aşağıdaki şekli tekip ederek görebilirsiniz. ."
+    print("Her yanlış tahminde idama daha da yaklaşırsınız. Bunu aşağıdaki şekli takip ederek görebilirsiniz. ."
 """
 ---0
  _/|\_
